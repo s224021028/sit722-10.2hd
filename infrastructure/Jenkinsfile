@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        GOOGLE_APPLICATION_CREDENTIALS = credentials("ea148254-95f9-4aec-b8b4-2fa0dc449d50")
         GCP_PROJECT = "sit722-10-2-hd"
         REGION = "australia-southeast2"
         CLUSTER_NAME = "autopilot-cluster-1"
@@ -9,7 +8,7 @@ pipeline {
     stages {
         stage("Login to Google Cloud") {
             steps {
-                withCredentials([file(credentialsId: "key-sa", variable: "GOOGLE_APPLICATION_CREDENTIALS")]) {
+                withCredentials([file(credentialsId: "ea148254-95f9-4aec-b8b4-2fa0dc449d50", variable: "GOOGLE_APPLICATION_CREDENTIALS")]) {
                     bat "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
                     bat "gcloud config set project ${GCP_PROJECT}"
                 }
