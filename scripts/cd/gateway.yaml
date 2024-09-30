@@ -20,7 +20,7 @@ spec:
     spec:
       containers: 
       - name: gateway
-        image: $CONTAINER_REGISTRY/gateway:$VERSION
+        image: australia-southeast2-docker.pkg.dev/sit722-10-2-hd/s224021028gcr/gateway:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT

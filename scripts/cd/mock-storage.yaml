@@ -20,7 +20,7 @@ spec:
     spec:
       containers: 
       - name: video-storage
-        image: $CONTAINER_REGISTRY/mock-storage:$VERSION
+        image: australia-southeast2-docker.pkg.dev/sit722-10-2-hd/s224021028gcr/mock-storage:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT

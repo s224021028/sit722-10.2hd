@@ -20,7 +20,7 @@ spec:
     spec:
       containers: 
       - name: history
-        image: $CONTAINER_REGISTRY/history:$VERSION
+        image: australia-southeast2-docker.pkg.dev/sit722-10-2-hd/s224021028gcr/history:latest
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT
