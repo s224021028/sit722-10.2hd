@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Login to Google Cloud") {
             steps {
-                withCredentials([file(credentialsID: "key-sa", variable: "GOOGLE_APPLICATION_CREDENTIALS")]) {
+                withCredentials([file(credentialsId: "key-sa", variable: "GOOGLE_APPLICATION_CREDENTIALS")]) {
                     bat "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
                     bat "gcloud config set project ${GCP_PROJECT}"
                 }
