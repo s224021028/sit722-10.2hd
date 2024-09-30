@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials("ebc0e2a1-8255-4a48-9107-9c4121c24204")
+        GCP_PROJECT = "sit722-10-2-hd"
+        REGION = "australia-southeast2"
+        CLUSTER_NAME = "autopilot-cluster-1"
+    }
+    stages {
+        stage("Login to Google Cloud") {
+            steps {
+                bat "gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}"
+                bat "gcloud config set project ${GCP_PROJECT}"
+            }
+        }
+        stage("Configure kubectl for GKE") {
+            steps {
+                bat "gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${GCP_PROJECT}"
+            }
+        }
+        stage("Deploy ingrastructure to GKE - MongoDB") {
+            steps {
+                bat "kubectl apply -f scripts/cd/mongodb.yaml"
+            }
+        }
+        stage("Deploy ingrastructure to GKE - RabbitMQ") {
+            steps {
+                bat "kubectl apply -f scripts/cd/rabbit.yaml"
+            }
+        }
+    }
+}
