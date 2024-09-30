@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        USE_GKE_GCLOUD_AUTH_PLUGIN = "True"
         GCP_PROJECT = "sit722-10-2-hd"
         REGION = "australia-southeast2"
         CLUSTER_NAME = "autopilot-cluster-1"
