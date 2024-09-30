@@ -3,7 +3,7 @@ pipeline {
     environment {
         USE_GKE_GCLOUD_AUTH_PLUGIN = "True"
         GCP_PROJECT = "sit722-10-2-hd"
-        REGION = "australia-southeast2"
+        REGION = "us-central1-c"
         CLUSTER_NAME = "cluster-1"
     }
     stages {
