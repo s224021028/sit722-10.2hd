@@ -4,7 +4,7 @@ pipeline {
         USE_GKE_GCLOUD_AUTH_PLUGIN = "True"
         GCP_PROJECT = "sit722-10-2-hd"
         REGION = "australia-southeast2"
-        CLUSTER_NAME = "autopilot-cluster-1"
+        CLUSTER_NAME = "cluster-1"
     }
     stages {
         stage("Login to Google Cloud") {
