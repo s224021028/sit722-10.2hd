@@ -3,7 +3,7 @@ pipeline {
     environment {
         USE_GKE_GCLOUD_AUTH_PLUGIN = "True"
         GCP_PROJECT = "sit722-10-2-hd"
-        REGION = "us-central1-c"
+        REGION = "australia-southeast2"
         CLUSTER_NAME = "cluster-1"
         REPO_NAME = "s224021028gcr"
     }
@@ -61,7 +61,7 @@ pipeline {
         }
         stage("Configure kubectl for GKE") {
             steps {
-                bat "gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${GCP_PROJECT}"
+                bat "gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION}-a --project ${GCP_PROJECT}"
             }
         }
         stage("Deploy app to GKE - FlixTube") {
