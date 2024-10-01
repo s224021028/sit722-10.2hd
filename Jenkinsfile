@@ -49,6 +49,16 @@ pipeline {
                 bat "docker tag video-upload:latest ${REGION}-docker.pkg.dev/${GCP_PROJECT}/${REPO_NAME}/video-upload:latest"
             }
         }
+        stage("Code Quality Analysis") {
+            steps {
+                script {
+                    def scannerHome = tool "SonarScanner";
+                    withSonarQubeEnv("SonarQube") {
+                        bat "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
         stage("Push images to Google Cloud Artifact Registry") {
             steps {
                 bat "docker push ${REGION}-docker.pkg.dev/${GCP_PROJECT}/${REPO_NAME}/gateway:latest"
