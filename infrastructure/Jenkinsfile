@@ -20,12 +20,12 @@ pipeline {
                 bat "gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${GCP_PROJECT}"
             }
         }
-        stage("Deploy ingrastructure to GKE - MongoDB") {
+        stage("Deploy infrastructure to GKE - MongoDB") {
             steps {
                 bat "kubectl apply -f scripts/cd/mongodb.yaml"
             }
         }
-        stage("Deploy ingrastructure to GKE - RabbitMQ") {
+        stage("Deploy infrastructure to GKE - RabbitMQ") {
             steps {
                 bat "kubectl apply -f scripts/cd/rabbit.yaml"
             }
